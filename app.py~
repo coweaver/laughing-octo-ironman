@@ -1,9 +1,0 @@
-from flask import Flask, session, render_template, request
-import google
-import urllib
-
-app = Flask(__name__)
-
-if __name__ == "__main__":
-    app.debug = True
-    app.run

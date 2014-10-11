@@ -38,7 +38,7 @@ def findnames(txt,d):
 
     #L[:] = [ o for o in L if isname(o,d)]
     #return L
-    reg = "((([DMS][ris]{1,3}\.? )?([A-Z]([a-z]*|\.)){1}([\s-][A-Z]([a-z]*|\.)){0,1}([\s-][A-Z][a-z]+){1}((,?[\s-][JjSs]r.)|([\s-][XIV]+)){0,1})|([DMS][ris]{1,3}\.?[\s-][A-Z][a-z]*))"
+    reg = "((([DMS][ris]{1,3}\.? )?([A-Z]([a-z]*|\.)){1}((([\s-][A-Z][a-z]*){0,1})|(([\s-][A-Z]\.){0,2}))([\s-][A-Z][a-z]+){1}((,?[\s-][JjSs]r.)|([\s-][XIV]+)){0,1})|([DMS][ris]{1,3}\.?[\s-][A-Z][a-z]*))"
     L = []
     ret = re.findall(reg, txt)
     for x in ret:

@@ -46,6 +46,14 @@ def findnames(txt,d):
             L.append(x[0])
     return L
 
+def finddates(txt):
+    reg = '(?:January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}, \d{1,4}'
+    L=[]
+    ret = re.findall(reg,txt)
+    for x in ret:
+        L.append(x)
+    return L
+    
 ##organizes results 
 def histogram(L):
     D = {}
@@ -67,6 +75,8 @@ def switchboard(s,g):
     L=s.lower().split(' ')
     if L[0]=='who':
         return who(g)
+    elif L[0]=='when':
+        return when(g)
     else:
         return 'you search for '+s
 
@@ -85,6 +95,19 @@ def who(g):
         print link
         names.extend(findnames(txt,d))
     return histogram(names)
+
+def when(g):
+    dates=[]
+    for link in g:
+        html = urllib.urlopen(link).read()
+        soup = BeautifulSoup(html)
+        for script in soup(['script','style']):
+            script.extract()
+        txt = soup.get_text().replace('\n',' ')
+        print link
+        dates.extend(finddates(txt))
+    return histogram(dates)
+        
 
 @app.route("/", methods=["GET", "POST"])
 def search():

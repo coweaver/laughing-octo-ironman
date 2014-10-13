@@ -1,3 +1,7 @@
+body {
+    background-color: #f7f7f7;
+}
+
 .form-container {
     position: relative;
     width: 100%;
@@ -39,7 +43,4 @@
     margin: 0 auto;
 }
 
-.result-container {
-
-}
 

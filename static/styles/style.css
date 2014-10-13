@@ -1,0 +1,42 @@
+.form-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.inner-container{
+    height: 400px;
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.pure-form-centered {
+    height: 150px;
+    margin: 0 auto;
+}
+
+.image-container {
+    width: 100px;
+    height: 100px;
+    border-radius: 120px;
+    -webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
+    border-style: solid;
+    border-color: #00b0ab;
+    background: url("/static/images/octopusicon.png") no-repeat;
+    margin: 0 auto;
+}
+
+.companyname {
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+    padding-left: 25%;
+}
+
+.companyname h1 {
+    font-weight: 600;
+}

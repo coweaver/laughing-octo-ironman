@@ -1,16 +1,29 @@
 <html>
 <head>
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 
 <body>
-  <form method="POST" class="pure-form">
-    <input name="query" type="text" placeholder="search">
-    
-    <button type="submit" class="pure-button pure-button-primary">Search</button>
-  </form>
-  {% if search %}
-  {{result}}
-  {% endif %} 
+    <div class="form-container">
+        <div class="inner-container">
+            <div class="image-container">
+            </div>
+            <div class="companyname">
+                <h1>Laughing-Octo-Ironman</h1>
+            </div>
+            <div>
+            <form method="POST" class="pure-form pure-form-centered">
+                <input class="pure-input-1" name="query" type="text" placeholder="search">
+
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="result-container">
+        {% if search %}
+            {{result}}
+        {% endif %}
+    </div>
 </body>
 </html>

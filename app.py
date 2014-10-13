@@ -58,7 +58,7 @@ def histogram(st,L,names):
         else:
             D[s]=1
     print s
-    s = ''
+    results = {}
     if names :
         h = open('diction2.txt','rb')
         d = pickle.load(h)
@@ -69,7 +69,7 @@ def histogram(st,L,names):
             if not w.lower() in st and isname(w,d):
                 print D[w]
                 print w
-                s+=str(D[w])+':'+w+' | '
+                results[D[w]] = w
                 numresults-=1
                 if numresults == 0:
                     break
@@ -77,9 +77,9 @@ def histogram(st,L,names):
         for w in sorted(D,key=D.get, reverse=True)[:10]:
             print D[w]
             print w
-            s+=str(D[w])+':'+w+' | '
-    print s
-    return s
+            results[D[w]] = w
+    print results
+    return results
     
 def switchboard(s,g):
     s=s.lower()

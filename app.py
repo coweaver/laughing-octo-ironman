@@ -47,8 +47,8 @@ def finddates(txt):
     for x in ret:
         L.append(x)
     return L
-    
-##organizes results 
+
+##organizes results
 def histogram(st,L,names):
     D = {}
     for x in L:
@@ -80,7 +80,7 @@ def histogram(st,L,names):
             results[D[w]] = w
     print results
     return results
-    
+
 def switchboard(s,g):
     s=s.lower()
     if s[:3]=='who':
@@ -114,7 +114,7 @@ def when(s,g):
         print link
         dates.extend(finddates(txt))
     return histogram('',dates,False)
-        
+
 
 @app.route("/", methods=["GET", "POST"])
 def search():
@@ -125,8 +125,12 @@ def search():
         n=5 ##the number of results, but the program is really slow
         g = google.search(query, num = n, start = 0, stop = n)
         result = switchboard(query,g)
-        return render_template("search.html",result=result,search=True)
-    
+        if isinstance(result, dict):
+            return render_template("search.html",result=result,isDict=True,
+                                   search=True)
+        else:
+            return render_template("search.html",result=result,isDict=False,
+                                   search=True)
 
 
 if __name__ == "__main__":

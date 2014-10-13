@@ -19,8 +19,15 @@
 
             </form>
         <div class="result-container">
-            {% if search %}
-                {{result}}
+            {% if search and not isDict %}
+                {{ result }}
+            {% endif %}
+            {% if search and isDict %}
+                {% for key in sortedKeys %}
+                <ul>
+                    <li>{{key}} hits: {{result[key]}}</li>
+                </ul>
+                {% endfor %}
             {% endif %}
         </div>
         </div>

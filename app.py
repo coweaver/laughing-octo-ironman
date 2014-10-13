@@ -126,8 +126,9 @@ def search():
         g = google.search(query, num = n, start = 0, stop = n)
         result = switchboard(query,g)
         if isinstance(result, dict):
+            sortedKeys = sorted(result.keys(), reverse = True)
             return render_template("search.html",result=result,isDict=True,
-                                   search=True)
+                                   sortedKeys=sortedKeys,search=True)
         else:
             return render_template("search.html",result=result,isDict=False,
                                    search=True)

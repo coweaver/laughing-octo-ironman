@@ -12,18 +12,16 @@
             <div class="companyname">
                 <h1>Laughing-Octo-Ironman</h1>
             </div>
-            <div>
             <form method="POST" class="pure-form pure-form-centered">
                 <input class="pure-input-1" name="query" type="text" placeholder="search">
 
             </form>
-            </div>
+        <div class="result-container">
+            {% if search %}
+                {{result}}
+            {% endif %}
         </div>
-    </div>
-    <div class="result-container">
-        {% if search %}
-            {{result}}
-        {% endif %}
+        </div>
     </div>
 </body>
 </html>

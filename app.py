@@ -4,8 +4,9 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-##isname, stringify, and findnames taken from regex assignment
-def isname(lis,d):#unused in this version
+
+# isname, stringify, and findnames taken from regex assignment
+def isname(lis,d):  #unused in this version
     x=0
     for sub in lis:
         if sub in d:
@@ -13,7 +14,7 @@ def isname(lis,d):#unused in this version
             pass
             x=x+1
             #print x
-        if x==2: 
+        if x==2:
             return False
     return True
 
@@ -53,8 +54,8 @@ def finddates(txt):
     for x in ret:
         L.append(x)
     return L
-    
-##organizes results 
+
+##organizes results
 def histogram(L):
     D = {}
     for x in L:
@@ -70,7 +71,7 @@ def histogram(L):
         s+=str(D[w])+':'+w+' | '
     print s
     return s
-    
+
 def switchboard(s,g):
     L=s.lower().split(' ')
     if L[0]=='who':
@@ -107,7 +108,7 @@ def when(g):
         print link
         dates.extend(finddates(txt))
     return histogram(dates)
-        
+
 
 @app.route("/", methods=["GET", "POST"])
 def search():
@@ -115,11 +116,11 @@ def search():
         return render_template("search.html")
     else:
         query = request.form['query']
-        n=5 ##the number of results, but the program is really slow
+        n=5 #the number of results, but the program is really slow
         g = google.search(query, num = n, start = 0, stop = n)
         result = switchboard(query,g)
         return render_template("search.html",result=result,search=True)
-    
+
 
 
 if __name__ == "__main__":

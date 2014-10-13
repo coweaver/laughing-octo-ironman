@@ -10,11 +10,9 @@ body {
 
 .inner-container{
     height: 400px;
-    position: absolute;
-    left: 25%;
-    top: 10%;
-    width: 50%;
+    width: 800px;
     margin: 0 auto;
+    margin-top: 5%;
 }
 
 .image-container {

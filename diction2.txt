@@ -1,0 +1,129 @@
+(lp0
+S'Alaska'
+p1
+aS'Arizona'
+p2
+aS'Arkansas'
+p3
+aS'California'
+p4
+aS'Colorado'
+p5
+aS'Connecticut'
+p6
+aS'Celaware'
+p7
+aS'Florida'
+p8
+aS'Georgia'
+p9
+aS'Hawaii'
+p10
+aS'Idaho'
+p11
+aS'Illinois'
+p12
+aS'Indiana'
+p13
+aS'Iowa'
+p14
+aS'Kansas'
+p15
+aS'Kentucky'
+p16
+aS'Louisiana'
+p17
+aS'Maine'
+p18
+aS'Maryland'
+p19
+aS'Massachusetts'
+p20
+aS'Michigan'
+p21
+aS'Minnesota'
+p22
+aS'Mississippi'
+p23
+aS'Missouri'
+p24
+aS'Montana'
+p25
+aS'Nebraska'
+p26
+aS'Nevada'
+p27
+aS'New Hampshire'
+p28
+aS'New Jersey'
+p29
+aS'New Mexico'
+p30
+aS'New York'
+p31
+aS'North Carolina'
+p32
+aS'North Dakota'
+p33
+aS'Ohio'
+p34
+aS'Oklahoma'
+p35
+aS'Oregon'
+p36
+aS'Pennsylvania'
+p37
+aS'Rhode Island'
+p38
+aS'South Carolina'
+p39
+aS'South Dakota'
+p40
+aS'Tennessee'
+p41
+aS'Texas'
+p42
+aS'Utah'
+p43
+aS'Vermont'
+p44
+aS'Virginia'
+p45
+aS'Washington'
+p46
+aS'West Virginia'
+p47
+aS'Wisconsin'
+p48
+aS'Wyoming'
+p49
+aS'Monday'
+p50
+aS'Tuesday'
+p51
+aS'Wednesday'
+p52
+aS'Thursday'
+p53
+aS'Friday'
+p54
+aS'Saturday'
+p55
+aS'Sunday'
+p56
+aS'United States'
+p57
+aS'United Kingdom'
+p58
+aS'America'
+p59
+aS'Africa'
+p60
+aS'Europe'
+p61
+aS'Asia'
+p62
+aS'Australia'
+p63
+aS'Antarctica'
+a.

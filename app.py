@@ -4,17 +4,10 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-
-# isname, stringify, and findnames taken from regex assignment
-def isname(lis,d):  #unused in this version
-    x=0
-    for sub in lis:
-        if sub in d:
-            #print sub
-            pass
-            x=x+1
-            #print x
-        if x==2:
+##isname, stringify, and findnames taken from regex assignment
+def isname(word,dic):
+    for sub in dic:
+        if sub in word:
             return False
     return True
 
@@ -26,7 +19,7 @@ def stringify(L):#also unused in this version
         s=s+","
     return s[:-1]
 
-def findnames(txt,d):
+def findnames(txt):
     #p = re.compile('(?:[A-Z][a-z].\.)* (?:[A-Z][a-z]+)(?:\s[A-Z][a-z]+)+')
     #p = re.compile(reg)
     #L=p.findall(txt)
@@ -54,9 +47,9 @@ def finddates(txt):
     for x in ret:
         L.append(x)
     return L
-
-##organizes results
-def histogram(L):
+    
+##organizes results 
+def histogram(st,L,names):
     D = {}
     for x in L:
         s = ''.join(x)
@@ -64,28 +57,41 @@ def histogram(L):
             D[s]+=1
         else:
             D[s]=1
+    print s
     s = ''
-    for w in sorted(D,key=D.get, reverse=True)[:10]:
-        print D[w]
-        print w
-        s+=str(D[w])+':'+w+' | '
+    if names :
+        h = open('diction2.txt','rb')
+        d = pickle.load(h)
+        h.close()
+        print d
+        numresults = 10
+        for w in sorted(D,key=D.get, reverse=True):
+            if not w.lower() in st and isname(w,d):
+                print D[w]
+                print w
+                s+=str(D[w])+':'+w+' | '
+                numresults-=1
+                if numresults == 0:
+                    break
+    else:
+        for w in sorted(D,key=D.get, reverse=True)[:10]:
+            print D[w]
+            print w
+            s+=str(D[w])+':'+w+' | '
     print s
     return s
-
+    
 def switchboard(s,g):
-    L=s.lower().split(' ')
-    if L[0]=='who':
-        return who(g)
-    elif L[0]=='when':
-        return when(g)
+    s=s.lower()
+    if s[:3]=='who':
+        return who(s,g)
+    elif s[:4]=='when':
+        return when(s,g)
     else:
         return 'you search for '+s
 
-def who(g):
+def who(s,g):
     result = ''
-    h = open('diction.txt','rb')
-    d = pickle.load(h)
-    h.close()
     names=[]
     for link in g:
         html = urllib.urlopen(link).read()
@@ -94,10 +100,10 @@ def who(g):
             script.extract()
         txt = soup.get_text().replace('\n',' ')
         print link
-        names.extend(findnames(txt,d))
-    return histogram(names)
+        names.extend(findnames(txt))
+    return histogram(s,names,True)
 
-def when(g):
+def when(s,g):
     dates=[]
     for link in g:
         html = urllib.urlopen(link).read()
@@ -107,8 +113,8 @@ def when(g):
         txt = soup.get_text().replace('\n',' ')
         print link
         dates.extend(finddates(txt))
-    return histogram(dates)
-
+    return histogram('',dates,False)
+        
 
 @app.route("/", methods=["GET", "POST"])
 def search():
@@ -116,13 +122,14 @@ def search():
         return render_template("search.html")
     else:
         query = request.form['query']
-        n=5 #the number of results, but the program is really slow
+        n=5 ##the number of results, but the program is really slow
         g = google.search(query, num = n, start = 0, stop = n)
         result = switchboard(query,g)
         return render_template("search.html",result=result,search=True)
-
+    
 
 
 if __name__ == "__main__":
     app.debug = True
     app.run()
+

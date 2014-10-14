@@ -4,20 +4,13 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-##isname, stringify, and findnames taken from regex assignment
+##findnames taken from regex assignment
 def isname(word,dic):
     for sub in dic:
         if sub in word:
             return False
     return True
 
-def stringify(L):#also unused in this version
-    s = ""
-    for n in L:
-        for sub in n:
-            s = s+" "+sub
-        s=s+","
-    return s[:-1]
 
 def findnames(txt):
     reg = "((([DMS][ris]{1,3}\.? )?([A-Z]([a-z]*|\.)){1}((([\s-][A-Z][a-z]*){0,1})|(([\s-][A-Z]\.){0,2}))([\s-][A-Z][a-z]+){1}((,?[\s-][JjSs]r.)|([\s-][XIV]+)){0,1})|([DMS][ris]{1,3}\.?[\s-][A-Z][a-z]*))"

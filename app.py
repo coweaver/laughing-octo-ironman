@@ -4,34 +4,15 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-##isname, stringify, and findnames taken from regex assignment
+##findnames taken from regex assignment
 def isname(word,dic):
     for sub in dic:
         if sub in word:
             return False
     return True
 
-def stringify(L):#also unused in this version
-    s = ""
-    for n in L:
-        for sub in n:
-            s = s+" "+sub
-        s=s+","
-    return s[:-1]
 
 def findnames(txt):
-    #p = re.compile('(?:[A-Z][a-z].\.)* (?:[A-Z][a-z]+)(?:\s[A-Z][a-z]+)+')
-    #p = re.compile(reg)
-    #L=p.findall(txt)
-    #print L
-    #x=0
-    #for i in xrange(len(L)):
-    #    L[i] = L[i].replace('\n',' ')
-    #    L[i] = L[i].lower().split(" ")
-    #print stringify(L)
-
-    #L[:] = [ o for o in L if isname(o,d)]
-    #return L
     reg = "((([DMS][ris]{1,3}\.? )?([A-Z]([a-z]*|\.)){1}((([\s-][A-Z][a-z]*){0,1})|(([\s-][A-Z]\.){0,2}))([\s-][A-Z][a-z]+){1}((,?[\s-][JjSs]r.)|([\s-][XIV]+)){0,1})|([DMS][ris]{1,3}\.?[\s-][A-Z][a-z]*))"
     L = []
     ret = re.findall(reg, txt)
